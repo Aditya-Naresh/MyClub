@@ -1,0 +1,19 @@
+{% extends 'events/base.html' %}
+
+    {% block content %}
+    
+    <center>
+        
+        <h1>Hello {{name}}! Events For {{month}} {{year}}</h1>
+        
+        {{cal | safe}}
+        
+        as of {{time}}
+        <br><br>
+
+        <p>Copy right c {{year}} </p>
+    </center>
+    {% endblock content %}
+    
+
+
