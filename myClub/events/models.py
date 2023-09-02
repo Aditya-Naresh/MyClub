@@ -26,6 +26,7 @@ class MyClubUser(models.Model):
     
 
 # Event
+
 class Event(models.Model):
     name = models.CharField('Event Name', max_length=120)
     event_date = models.DateTimeField('Event date')

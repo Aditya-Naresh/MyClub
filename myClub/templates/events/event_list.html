@@ -16,8 +16,11 @@
                         <li> {{ user }} </li>
                         {% endfor %}
                     </ul>
-                    <a href="mailto:{{event.venue.email_address}}" class="btn btn-primary">Email</a>
+                    <a href="mailto:{{event.venue.email_address}}" class="btn btn-dark">Email</a>
                 </div>
+                <div class="card-footer text-muted">
+                    <a href="{% url 'update-event' event.id %}" class="btn btn-secondary">Update Event</a>
+                  </div>
             </div>
         {% endfor %}
     {% endblock %}
