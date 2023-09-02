@@ -8,7 +8,9 @@
         <h1>You Searched for {{searched}} </h1>
 
         {% for venue in venues %}
-            {{venue}} <br>
+        <a href="{% url 'show-venue' venue.id %}">          
+            {{venue}}  <br>
+        </a>
         {% endfor %}
 
         {% else %}

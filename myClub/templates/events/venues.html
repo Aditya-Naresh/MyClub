@@ -13,9 +13,16 @@
                 <td>
                 <a href="{% url 'show-venue' venue.id %}">
                     
-                    {{venue}}  <br>
+                    {{venue}} 
                 </a>
+                <br>
 
+                </td>
+                <td align="right">
+                   <a href="{% url 'update-venue' venue.id %}" class="btn btn-sm btn-secondary">
+                       Update
+                    </a> 
+                    
                 </td>
             </tr>
                 {% endfor %}
