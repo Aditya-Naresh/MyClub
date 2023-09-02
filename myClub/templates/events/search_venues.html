@@ -1,0 +1,23 @@
+{% extends 'events/base.html' %}
+
+    {% block content %}
+    
+    <center>
+        {% if searched %}
+        
+        <h1>You Searched for {{searched}} </h1>
+
+        {% for venue in venues %}
+            {{venue}} <br>
+        {% endfor %}
+
+        {% else %}
+        <h1>Enter a keyword and search again</h1>
+        
+        {% endif %}
+        
+    </center>
+    {% endblock %}
+    
+
+
