@@ -1,0 +1,44 @@
+{% extends 'events/base.html' %}
+
+    {% block content %}
+    
+    <center>
+        
+      
+
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">{{venue}} </h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"> 
+                        <ul class="list-group">
+                            {% if venue.address %}
+                            <li class="list-group-item">{{ venue.address }}</li>
+                            {% endif %}
+                            {% if venue.zip_code %}
+                            <li class="list-group-item">{{ venue.zip_code }}</li>
+                            {% endif %}
+                            {% if venue.phone %}
+                            <li class="list-group-item">{{ venue.phone }}</li>
+                            {% endif %}
+                            {% if venue.email_address %}
+                            <li class="list-group-item">{{ venue.email_address }}</li>
+                            {% endif %}
+                            {% if venue.website %}
+                            <li class="list-group-item"><a href="{{ venue.website }}">
+                                {{ venue.website }} 
+                            </a></li>
+                            {% endif %}
+                        </ul>
+                    </p>
+                    
+                </div>
+            </div>
+
+        
+    </center>
+    {% endblock %}
+    
+
+
