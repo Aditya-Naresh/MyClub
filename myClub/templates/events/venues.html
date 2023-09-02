@@ -22,8 +22,13 @@
                    <a href="{% url 'update-venue' venue.id %}" class="btn btn-sm btn-secondary">
                        Update
                     </a> 
-                    
-                </td>
+                    <a href="{% url 'delete-venue' venue.id %}" class="btn btn-sm btn-danger">
+                        Delete
+                    </a> 
+                    </td>
+                 
+
+                  
             </tr>
                 {% endfor %}
                 
