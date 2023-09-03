@@ -19,13 +19,15 @@
 
                 </td>
                 <td align="right">
-                   <a href="{% url 'update-venue' venue.id %}" class="btn btn-sm btn-secondary">
-                       Update
-                    </a> 
-                    <a href="{% url 'delete-venue' venue.id %}" class="btn btn-sm btn-danger">
-                        Delete
-                    </a> 
-                    </td>
+                  <a href="{% url 'update-venue' venue.id %}" class="btn btn-sm btn-secondary">
+                    Update
+                  </a> 
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'delete-venue' venue.id %}" class="btn btn-sm btn-danger">
+                    Delete
+                  </a> 
+                  {% endif %}
+                </td>
                  
 
                   

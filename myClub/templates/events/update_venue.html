@@ -1,15 +1,19 @@
 {% extends 'events/base.html' %}
 
     {% block content %}
-    
+    {% if user.is_authenticated %}
     <h1>Update Venue {{venue}} </h1>
     <br>
     <form action="" method="post">
         {% csrf_token %}
-
+        
         {{ form.as_p }}
         <input type="submit" value="Update" class="btn btn-secondary">
     </form>
+    {% else %}
+    <h1>You Must be Logged in to View this page</h1>
+    <h3><a href="{% url 'login' %}">Login</a></h3>
+    {% endif %}
     {% endblock %}
     
 
