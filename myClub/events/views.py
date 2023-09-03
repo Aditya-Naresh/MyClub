@@ -5,7 +5,32 @@ from datetime import datetime
 from . models import Event, Venue
 from . forms import VenueForm, EventForm
 from django.http import HttpResponseRedirect, HttpResponse
+import csv
 # Create your views here.
+
+
+#Generate List as CSV file
+def venue_csv(request):
+    response = HttpResponse(content_type = 'text/csv')
+    response['Content-Disposition'] = 'attachment; filename = venues.csv'
+
+    # Create a CSV writer
+    writer = csv.writer(response)
+
+    #Designate the models
+    venues = Venue.objects.all()
+
+
+    # Add columns to CSV
+    writer.writerow(['Venue Name', 'Address', 'Zip Code', 'Phone', 'Website', "Email"])
+
+  
+    #Loop through
+    for venue in venues:
+        writer.writerow([venue.name,venue.address ,venue.zip_code, venue.phone, venue.website, venue.email_address])
+
+    return response
+    
 
 # Generate Venue List as a txt file
 def venue_text(request):
