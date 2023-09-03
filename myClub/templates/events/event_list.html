@@ -19,9 +19,11 @@
                     <a href="mailto:{{event.venue.email_address}}" class="btn btn-dark">Email</a>
                 </div>
                 <div class="card-footer text-muted">
+                    {% if user.is_authenticated %}
+                    {% if user == event.manager %}
                     <a href="{% url 'update-event' event.id %}" class="btn btn-secondary">Update Event</a>
-                    {% if user.is_autheticated %}
                     <a href="{% url 'delete-event' event.id %}" class="btn btn-danger">Delete Event</a>
+                    {% endif %}
                     {% endif %}
                     
                 </div>
