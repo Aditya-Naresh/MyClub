@@ -4,8 +4,27 @@ from calendar import HTMLCalendar
 from datetime import datetime
 from . models import Event, Venue
 from . forms import VenueForm, EventForm
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 # Create your views here.
+
+# Generate Venue List as a txt file
+def venue_text(request):
+    response = HttpResponse(content_type = 'text/plain')
+    response['Content-Disposition'] = 'attachment; filename = venues.txt'
+
+    #Designate the models
+    venues = Venue.objects.all()
+
+    lines = []
+    #Loop through
+    for venue in venues:
+        lines.append(f'Venue: {venue.name} \n Address : {venue.address} \n Zip Code : {venue.zip_code} \n Phone : {venue.phone} \n Web : {venue.website} \n Email : {venue.email_address} \n\n\n\n')
+
+    # write to text
+    response.writelines(lines)
+    
+
+    return response
 
 def delete_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
@@ -95,13 +114,12 @@ def add_venue(request):
 
 
 def all_events(request):
-    event_list = Event.objects.all()
+    event_list = Event.objects.all().order_by('event_date', 'venue')
     return render(request, 'events/event_list.html', {'event_list' : event_list})
 
 
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
     name = 'Aditya'
-
     month = month.title()
 
     # Convert Month name  into month number
