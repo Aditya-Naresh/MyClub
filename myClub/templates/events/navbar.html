@@ -27,6 +27,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'venue_csv'  %}"> Download CSV </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'venue_pdf'  %}"> Download PDF </a>
+          </li>
         </ul>
         <form class="d-flex" method="post" action="{% url 'search-venues' %}">
           {% csrf_token %}
