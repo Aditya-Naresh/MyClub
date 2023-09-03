@@ -1,0 +1,29 @@
+{% extends 'events/base.html' %}
+
+    {% block content %}
+    
+    {% if form.errors %}
+        
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong> <p>There was an error in the form</p> </strong> 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    {% endif %}
+
+   <div class="shadow-lg p-3 mb-5 bg-body rounded">
+
+       <h1>Register User</h1>
+       <br>
+       <form acrion="{% url 'register_user' %}"  method="post">
+           {% csrf_token %}
+           
+           {{form.as_p}}
+           <br><br>
+           <input type="submit" value="submit" class="btn btn-secondary">
+        </form>
+    </div>
+    
+    {% endblock %}
+    
+
+
