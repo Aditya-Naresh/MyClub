@@ -2,7 +2,7 @@
 
     {% block content %}
     {% if user.is_authenticated %}
-    {% if user == event.manager %}
+    {% if user.is_superuser or user == event.manager %}
     <h1>Update Event {{event}} </h1>
     <br>
     

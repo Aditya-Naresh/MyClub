@@ -20,7 +20,7 @@
                 </div>
                 <div class="card-footer text-muted">
                     {% if user.is_authenticated %}
-                    {% if user == event.manager %}
+                    {% if user.is_superuser or user == event.manager %}
                     <a href="{% url 'update-event' event.id %}" class="btn btn-secondary">Update Event</a>
                     <a href="{% url 'delete-event' event.id %}" class="btn btn-danger">Delete Event</a>
                     {% endif %}

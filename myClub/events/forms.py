@@ -28,8 +28,8 @@ class VenueForm(ModelForm):
 
         }
 
-
-class EventForm(ModelForm):
+# Admin Superuser form
+class EventFormAdmin(ModelForm):
     class Meta:
         model = Event
         fields = ('name', 'event_date', 'venue', 'manager', 'description','attendees')
@@ -38,7 +38,7 @@ class EventForm(ModelForm):
             "Name": "Enter Event Name",
             "event_date": "YYYY-MM-DD",
             "venue":"Venue",
-            "manager" : "Maanager",
+            "manager" : "Manager",
             "description" : "Description",
             "attendees" :"Attendees"
         }
@@ -48,6 +48,30 @@ class EventForm(ModelForm):
             'event_date':forms.TextInput(attrs={'class':'form-control','placeholder' : 'Event date'}),
             'venue':forms.Select(attrs={'class':'form-select','placeholder' : 'Venue'}),
             'manager':forms.Select(attrs={'class':'form-select','placeholder' : 'Manager'}),
+            'description':forms.Textarea(attrs={'class':'form-control','placeholder' : 'Description'}),
+            'attendees':forms.SelectMultiple(attrs={'class':'form-select','placeholder' : 'Attendees'}),
+
+        }
+
+
+
+class UserEventForm(ModelForm):
+    class Meta:
+        model = Event
+        fields = ('name', 'event_date', 'venue', 'description','attendees')
+
+        labels = {
+            "Name": "Enter Event Name",
+            "event_date": "YYYY-MM-DD",
+            "venue":"Venue",
+            "description" : "Description",
+            "attendees" :"Attendees"
+        }
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class':'form-control', 'placeholder' : 'Name'}),
+            'event_date':forms.TextInput(attrs={'class':'form-control','placeholder' : 'Event date'}),
+            'venue':forms.Select(attrs={'class':'form-select','placeholder' : 'Venue'}),
             'description':forms.Textarea(attrs={'class':'form-control','placeholder' : 'Description'}),
             'attendees':forms.SelectMultiple(attrs={'class':'form-select','placeholder' : 'Attendees'}),
 

@@ -9,6 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">{{venue}} </h5>
+                    venue -test
                 </div>
                 <div class="card-body">
                     <p class="card-text"> 
@@ -29,6 +30,8 @@
                             <li class="list-group-item"><a href="{{ venue.website }}">
                                 {{ venue.website }} 
                             </a></li>
+                            <li>Owner : {{ venue_owner }} </li>
+                            <li>Owner email: {{venue_owener.email}} </li>
                             {% endif %}
                         </ul>
                     </p>
