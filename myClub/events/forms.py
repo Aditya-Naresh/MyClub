@@ -7,7 +7,7 @@ from . models import Venue,Event
 class VenueForm(ModelForm):
     class Meta:
         model = Venue
-        fields = ("name","address","zip_code","phone","website","email_address")
+        fields = ("name","address","zip_code","phone","website","email_address", "venue_image")
 
         labels = {
             "name": "Enter Venue name",
@@ -15,7 +15,8 @@ class VenueForm(ModelForm):
             "zip_code":"ZIP Code",
             "phone" : "Phone",
             "website" : "Link to the Website",
-            "email_address" :"Email Address"
+            "email_address" :"Email Address",
+            "venue_image" : ''
         }
 
         widgets = {

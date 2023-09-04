@@ -2,7 +2,6 @@
 
     {% block content %}
     
-    <center>
         
       
 
@@ -35,14 +34,19 @@
                             {% if venue_owener.email %}
                             <li class="list-group-item">Owner email: {{venue_owener.email}} </li>
                             {% endif %}
+                            {% if venue.venue_image %}
+                            <li class="list-group-item">
+                                     <img src="{{ venue.venue_image.url }}" alt="" width="200" height="150">
+                                    </li>
+                                    {% endif %}
                         </ul>
                     </p>
                     
                 </div>
             </div>
-
+            
         
-    </center>
+
     {% endblock %}
     
 
