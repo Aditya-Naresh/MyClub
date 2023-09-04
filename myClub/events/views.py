@@ -243,7 +243,8 @@ def all_events(request):
 
 
 def home(request, year=datetime.now().year, month=datetime.now().strftime('%B')):
-    name = 'Aditya'
+    
+    
     month = month.title()
 
     # Convert Month name  into month number
@@ -258,15 +259,18 @@ def home(request, year=datetime.now().year, month=datetime.now().strftime('%B'))
     current_year = now.year
 
     # Current time
-
     time = now.strftime('%I: %M: %p')
 
+    # Query Event Model
+    event_list = Event.objects.filter(
+        event_date__year = year, event_date__month = month_number
+    )
     return render(request, "events/home.html",{
-        'name': name,
         'year': year,
         'month': month,
         'month_number': month_number,
         "cal" : cal,
         "current_year" : current_year,
         "time" : time,
+        "event_list" : event_list,
     })
