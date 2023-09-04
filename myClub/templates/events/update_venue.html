@@ -2,7 +2,7 @@
 
     {% block content %}
     {% if user.is_authenticated %}
-    {% if user == venue.owner %}
+    {% if user.id == venue.owner %}
     <h1>Update Venue {{venue}} </h1>
     <br>
     <form action="" method="post">

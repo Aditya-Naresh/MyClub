@@ -29,9 +29,11 @@
                             {% if venue.website %}
                             <li class="list-group-item"><a href="{{ venue.website }}">
                                 {{ venue.website }} 
+                                {% endif %}
                             </a></li>
-                            <li>Owner : {{ venue_owner }} </li>
-                            <li>Owner email: {{venue_owener.email}} </li>
+                            <li class="list-group-item">Owner : {{ venue_owner }} </li>
+                            {% if venue_owener.email %}
+                            <li class="list-group-item">Owner email: {{venue_owener.email}} </li>
                             {% endif %}
                         </ul>
                     </p>
