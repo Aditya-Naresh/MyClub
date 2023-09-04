@@ -18,6 +18,18 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 # Create your views here.
 
+
+# Search Events
+def search_events(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        events = Event.objects.filter(name__contains = searched)
+        return render(request, 'events/search_events.html',{'searched' : searched,  'events':events})
+    else:
+        return render(request, 'events/search_events.html',{})
+
+
+
 # My Events Page
 def my_events(request):
     if request.user.is_authenticated:
