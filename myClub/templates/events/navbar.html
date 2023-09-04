@@ -15,8 +15,12 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="{% url 'list-events'  %}">All Events</a></li>
+              {% if user.is_authenticated %}
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'add-event'  %}">Add Events</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'my_events'  %}">My Events</a></li>
+              {% endif %}
             </ul>
           </li>
           
