@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . models import Venue, MyClubUser, Event
+from django.contrib.auth.models import Group
 # Register your models here.
 
 # admin.site.register(Venue)
@@ -20,3 +21,6 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'event_date', 'venue')
     list_filter = ('event_date', 'venue')
     ordering = ('-event_date',)
+
+# remove groups
+admin.site.unregister(Group)
