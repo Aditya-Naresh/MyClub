@@ -12,13 +12,38 @@ import csv
 from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
+from django.urls import reverse
 
 from django.contrib import messages
 
 from django.core.paginator import Paginator
 # Create your views here.
 
+# show event
+def show_event(request,event_id):
+    event = Event.objects.get(pk=event_id)
+ 
+    return render(request, 'events/show_event.html', {"event" : event})
+   
 
+
+
+# Venue Event
+def venue_events(request,venue_id):
+    # get the venue
+    venue = Venue.objects.get(id=venue_id)
+
+    # get the events at that venue
+    events = venue.event_set.all()
+    if events:
+
+        return render(request, 'events/venue_events.html', {
+            "events" : events,
+        })
+
+    else:
+        messages.success(request, "That venue has no events at this time")
+        return redirect('admin_approval')
 
 # Admin Event Approval
 def admin_approval(request):
@@ -26,7 +51,7 @@ def admin_approval(request):
     venue_count = Venue.objects.all().count()
     user_count = User.objects.all().count()
 
-    
+    venue_list = Venue.objects.all()
     event_list =Event.objects.all().order_by('-event_date')
     if request.user.is_superuser:
         if request.method == "POST":
@@ -44,12 +69,14 @@ def admin_approval(request):
                 "event_count" : event_count,
                 "venue_count" : venue_count,
                 "user_count" : user_count,
+                "venue_list" : venue_list,
                 })
 
     else:
         messages.success(request,'You are not authorised to use this')
         return redirect('home')
     return render(request, 'events/admin_approval.html')
+
 
 
 # Search Events

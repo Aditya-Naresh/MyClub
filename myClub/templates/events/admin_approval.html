@@ -21,6 +21,35 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th scope="col">Venue Name</th>
+                        <th scope="col">Event</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            {% for venue in venue_list  %}
+            <tr>
+                <td>
+                    <a href="{% url 'show-venue' venue.id %}">
+
+                        {{venue}} 
+                    </a>
+                </td>
+                <td >
+                    <a href="{% url 'venue_events' venue.id %}" class="btn btn-secondary btn-sm">
+
+                        List Events in this Venue
+                    </a>
+                </td>    
+            </tr>
+            
+            {% endfor %}
+        </tbody>
+      </table>
+            <br><br><br>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
                         <th scope="col">Event Name</th>
                         <th scope="col">Approved</th>
             

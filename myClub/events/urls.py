@@ -13,13 +13,15 @@ urlpatterns = [
     path('update_venue/<venue_id>', views.update_venue, name='update-venue'),
     path('add_event',views.add_event, name='add-event'),
     path('update_event/<event_id>', views.update_event, name='update-event'),
-    path('delet_event/<event_id>', views.delete_event, name='delete-event'),
-    path('delet_venue/<venue_id>', views.delete_venue, name='delete-venue'),
+    path('delete_event/<event_id>', views.delete_event, name='delete-event'),
+    path('delete_venue/<venue_id>', views.delete_venue, name='delete-venue'),
     path('venue_text/', views.venue_text, name='venue_text'),
     path('venue_csv/', views.venue_csv, name='venue_csv'),
     path('venue_pdf/', views.venue_pdf, name='venue_pdf'),
     path('my_events/', views.my_events, name='my_events'),
     path('search_events/', views.search_events, name='search_events'),
     path('admin_approval/', views.admin_approval, name='admin_approval'),
+    path('venue_events/<int:venue_id>', views.venue_events, name='venue_events'),
+    path('show_event/<event_id>', views.show_event, name='show_event'),
 
 ]
