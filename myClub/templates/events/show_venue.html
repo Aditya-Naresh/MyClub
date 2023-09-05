@@ -43,6 +43,17 @@
                     </p>
                     
                 </div>
+                <br> 
+                {% if events %}
+                <h3>Events at this Venue...</h3>
+                {% for event in events %}
+                <a href="{% url 'show_event' event.id %}"> 
+                    {{event}} <br>
+                </a>
+                {% endfor %}
+                {% else %}
+                <h3>There are no events scheduled at this time</h3>
+                {% endif %}
             </div>
             
         

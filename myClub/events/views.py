@@ -262,7 +262,8 @@ def search_venues(request):
 def show_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     venue_owner = User.objects.get(pk=venue.owner)
-    return render(request, 'events/show_venue.html', { 'venue' : venue, 'venue_owner': venue_owner})
+    events = Event.objects.filter(venue = venue_id)
+    return render(request, 'events/show_venue.html', { 'venue' : venue, 'venue_owner': venue_owner, 'events' : events,})
 
 
 
@@ -273,8 +274,14 @@ def list_venues(request):
     p = Paginator(Venue.objects.all(), 1)
     page = request.GET.get('page')
     venues = p.get_page(page)
+
     nums = "a" * venues.paginator.num_pages #Not Sure if it's standard method
-    return render(request, 'events/venues.html', {'venue_list' : venue_list, 'venues' : venues, 'nums':nums} )
+    return render(request, 'events/venues.html', {
+        'venue_list' : venue_list, 
+        'venues' : venues, 
+        'nums':nums,
+       
+        } )
 
 
 def add_venue(request):
